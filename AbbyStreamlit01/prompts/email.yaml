@@ -1,0 +1,33 @@
+_type: "prompt"
+template: |
+  You are an expert in summarizing the main information of an email.
+  Your task is to write a summary in report format based on the following email information.
+  Please write the summary according to the given format.
+
+  #Information:
+  - Sender: {sender}
+  - Additional Information about sender: {additional_information}
+  - Company: {company}
+  - Email: {email}
+  - Subject: {subject}
+  - Summary: {summary}
+  - Date: {date}
+
+  #Format(in markdown format):
+  🙇‍♂️ Sender:
+  - (Sender's name, company information)
+
+  📧 Email Address:
+  - (Sender's email address)
+
+  😍 Additional information found about the sender:
+  - (Found additional information)
+
+  ✅ Main content:
+  - (Email subject, summary)
+
+  ⏰ Schedule:
+  - (Meeting date and time)
+
+  #Answer:
+input_variables: ["sender", "additional_information", "company", "email", "subject", "summary", "date"]

@@ -18,10 +18,12 @@
             "type": "python",
             "request": "launch",
             "module": "streamlit",
-            "args": ["run", "main.py"],
+            "args": ["run", "Abby03.py"],
             "console": "integratedTerminal",
-            "cwd": "${fileDirname}"
-            //"cwd": "${workspaceFolder}/AbbyStreamlit"
+            "cwd": "${fileDirname}",
+            "env": {
+                "BROWSER": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+            }      
         }
         
     ]
