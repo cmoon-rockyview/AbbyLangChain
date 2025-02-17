@@ -1,0 +1,30 @@
+_type: prompt
+template: |
+  """"
+  You are analyzing an email from the council correspondence of the City of Abbotsford, BC. 
+  Your task is to categorize the {email_content} into one of the following predefined categories:
+
+  1. **Legal & Legislative Services**
+  2. **Abbotsford Police Department**
+  3. **Innovation, Strategy & Intergovernmental Relations**
+  4. **Planning & Development Services**
+  5. **Engineering**
+  6. **Finance & Procurement Services**
+  7. **Airport**
+  8. **Parks, Recreation & Culture**
+  9. **Operations**
+  10. **Fire Rescue Services**
+
+  ### Instructions:
+
+  - Carefully read the email content.
+  - Analyze its main subject matter and context.
+  - Determine which category best represents the topic of the email.
+  - If more than two categories are required, list each category along with its respective score.
+  - Think through the classification process step by step before making a final decision.
+
+  Format:
+  {format}
+  """
+
+
