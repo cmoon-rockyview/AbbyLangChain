@@ -65,7 +65,7 @@ def create_retrieve(query):
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
     # Define the path for FAISS database
-    DB_PATH = r"D:\AbbyLangchain\RAG\faiss_db"
+    DB_PATH = r"D:\GISDev\AbbyLangChain\RAG\faiss_db"
 
     # Load both FAISS indexes
     vectorstore_1 = FAISS.load_local(

@@ -14,9 +14,12 @@
 *.sqlite3
 *.bin
 *.wav
+*.mp3
+*.msg
+
 
 .idea/
-.vscode/
+
 
 # folder
 */env/*
@@ -28,6 +31,24 @@
 */unuse/*
 */corpus/*
 */mlruns/*
+*/.ipynb_checkpoints/*
+*/.pytest_cache/*
+*/.mypy_cache/*
+*/.cache/*
+*/.tox/*
+*/.venv/*
+*/.env/*
+*/.git/*
+*/.gitignore/*
+*/.gitattributes/*
+*/.github/*
+*/.gitlab/*
+*/.gitlab-ci.yml/*
+*/.gitmodules/*
+*/.gitkeep/*
+*/.gitpod/*
+*/.gitpod.Dockerfile/*
+*/.gitpod.yml
 working/
 
 ### JupyterNotebooks ###

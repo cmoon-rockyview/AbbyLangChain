@@ -65,7 +65,7 @@ def create_retrieve(query):
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
     # Define the path for ChromaDB persistence
-    DB_PATH = r"D:\AbbyLangchain\RAG\chroma_db"
+    DB_PATH = r"D:\GISDev\AbbyLangChain\RAG\chroma_db"
 
     # Initialize Chroma vector store
     db = Chroma(
