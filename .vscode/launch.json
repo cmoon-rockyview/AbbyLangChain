@@ -18,7 +18,7 @@
             "type": "python",
             "request": "launch",
             "module": "streamlit",
-            "args": ["run", "Abby03.py"],
+            "args": ["run", "Main.py"],
             "console": "integratedTerminal",
             "cwd": "${fileDirname}",
             "env": {
