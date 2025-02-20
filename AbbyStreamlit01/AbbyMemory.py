@@ -13,6 +13,7 @@ from langchain_community.chat_message_histories import SQLChatMessageHistory
 from langchain_core.runnables.utils import ConfigurableFieldSpec
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 # Load API KEY
@@ -20,10 +21,11 @@ load_dotenv()
 
 st.title("Abby Chatbot with Memory")
 
+session_id = "abc123"
 with st.sidebar:
     clear_button = st.button("Clear Chat")
-    selected_prompt = st.selectbox("Choose a prompt", ("Conversation", "Email SummaryM01", "Email SummaryM02" ))
-    session_id = st.text_input("Input Session Id", "abc123")
+    selected_model = st.selectbox("Choose a model", ("gpt-4o-mini", "gemini-pro"), index=1)
+    session_id = st.text_input("Input Session Id", session_id)
 
 # Initialize session state
 if "messages" not in st.session_state:
@@ -52,7 +54,7 @@ def add_message(role, message):
     st.session_state["messages"].append(ChatMessage(role = role, content = message))
 
 
-def create_chain(prompt_type):
+def create_chain(selected_model = "gpt-4o-mini"):
 
     prompt = ChatPromptTemplate.from_messages(
         [
@@ -62,20 +64,17 @@ def create_chain(prompt_type):
             MessagesPlaceholder(variable_name="chat_history"),
             ("human", "{question}"),  
         ]
-    )
-
-    if prompt_type == "Email SummaryM01":
-        st.session_state["messages"] = []        
-        prompt = load_prompt("prompts/SummaryM01.yaml", encoding="utf-8")
-    elif prompt_type == "Email SummaryM02":
-        st.session_state["messages"] = []
-        prompt = load_prompt("prompts/SummaryM02.yaml", encoding="utf-8")
-
-
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature = 0)
+   )
+    
+    llm = None
+    if selected_model == "gemini-pro":        
+        llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+    elif selected_model == "gpt-4o-mini":
+        llm = ChatOpenAI(model="gpt-4o-mini", temperature = 0)
+    
     ouptputParser = StrOutputParser()
 
-    chain = prompt | ChatOpenAI(model_name="gpt-4o-mini") | StrOutputParser()
+    chain = prompt | llm | StrOutputParser()
 
     chain_with_history = RunnableWithMessageHistory(
         chain,
@@ -88,7 +87,7 @@ def create_chain(prompt_type):
     return chain_with_history
 
 if "chain" not in st.session_state:
-    st.session_state["chain"] = create_chain(selected_prompt)
+    st.session_state["chain"] = create_chain(selected_model)
 
 if user_input:
     #print conversation on web
