@@ -18,11 +18,23 @@
             "type": "python",
             "request": "launch",
             "module": "streamlit",
-            "args": ["run", "Main.py"],
+            "args": ["run", "AbbyMemory.py"],
             "console": "integratedTerminal",
             "cwd": "${fileDirname}",
             "env": {
                 "BROWSER": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+            }      
+        },
+        {
+            "name": "StreamlitEdge: Run app",
+            "type": "python",
+            "request": "launch",
+            "module": "streamlit",
+            "args": ["run", "AbbyMemoryDB.py"],
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
+            "env": {
+                "BROWSER": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
             }      
         }
         
