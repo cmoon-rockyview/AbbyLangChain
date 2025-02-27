@@ -17,6 +17,7 @@
 *.wav
 *.mp3
 *.msg
+*.json
 
 
 .idea/
